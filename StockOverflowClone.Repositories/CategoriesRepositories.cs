@@ -59,7 +59,6 @@ namespace StockOverflowClone.Repositories
             Category existingCategory = db.Categories.Where(temp => temp.CategoryID == cat.CategoryID).FirstOrDefault();
             if (existingCategory != null)
             {
-
                 existingCategory.CategoryName = cat.CategoryName;
                 db.SaveChanges();
             }
