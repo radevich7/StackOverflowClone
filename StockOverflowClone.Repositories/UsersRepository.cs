@@ -37,42 +37,59 @@ namespace StockOverflowClone.Repositories
 
         public List<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            List<User> users = db.Users.Where(temp => temp.IsAdmin == false).ToList();
+            return users;
         }
 
         public int GetLatestUserID()
         {
-            throw new NotImplementedException();
+            int lastUserID = db.Users.Last().UserID;
+            return lastUserID;
         }
 
         public List<User> GetUserByUserID(int UserID)
         {
-            throw new NotImplementedException();
+            List<User> usersById = db.Users.Where(temp => temp.UserID == UserID).ToList();
+            return usersById;
         }
 
         public List<User> GetUsersByEmail(string Email)
         {
-            throw new NotImplementedException();
+            List<User> usersByEmail = db.Users.Where(temp => temp.Email == Email).ToList();
+
+            return usersByEmail;
         }
 
         public List<User> GetUsersByEmailAndPassword(string Email, string Password)
         {
-            throw new NotImplementedException();
+            List<User> usersByEmail = db.Users.Where(temp => temp.Email == Email && temp.PasswordHash == Password).ToList();
+
+            return usersByEmail;
         }
 
         public void InsertUser(User u)
         {
-            throw new NotImplementedException();
+            db.Users.Add(u);
+            db.SaveChanges();
         }
 
         public void UpdateUserDetails(User u)
         {
-            throw new NotImplementedException();
+            User existingUser = db.Users.Where(temp => temp.UserID == u.UserID).FirstOrDefault();
+            existingUser.UserID = u.UserID;
+            existingUser.Email = u.Email;
+            existingUser.PasswordHash = u.PasswordHash;
+            db.SaveChanges();
         }
 
         public void UpdateUserPassword(User u)
         {
-            throw new NotImplementedException();
+            User existingUser = db.Users.Where(temp => temp.UserID == u.UserID).FirstOrDefault();
+            if (u != null)
+            {
+                existingUser.PasswordHash = u.PasswordHash;
+            }
+            db.SaveChanges();
         }
     }
 
