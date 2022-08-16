@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace StackOverflowClone.ServiceLayer
 {
-    public class SHA256HashGenerator
+    class SHA256HashGenerator
     {
         public static string GenerateHash(string inputData)
         {
