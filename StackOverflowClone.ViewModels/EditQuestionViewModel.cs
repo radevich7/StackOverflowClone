@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace StackOverflowClone.ViewModels
 {
-    public class EditUserPasswordViewModel
+    public class EditQuestionViewModel
     {
         [Required]
-        public int UserID { get; set; }
+        public int QuestionID { get; set; }
         [Required]
-        public string Email { get; set; }
+        public string QuestionName { get; set; }
         [Required]
-        public string Password { get; set; }
+        public DateTime QuestionDateAndTime { get; set; }
         [Required]
-        public string ConfirmPassword { get; set; }
-
+        public int CategoryID { get; set; }
     }
 }
