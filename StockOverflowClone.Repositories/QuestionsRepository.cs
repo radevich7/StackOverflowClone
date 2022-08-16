@@ -63,12 +63,7 @@ namespace StockOverflowClone.Repositories
 
             if (existingQuestion != null)
             {
-
-                if (value > 0)
-                {
-                    existingQuestion.AnswersCount += value;
-                }
-
+                existingQuestion.AnswersCount += value;
                 db.SaveChanges();
             }
 
@@ -107,16 +102,7 @@ namespace StockOverflowClone.Repositories
 
             if (existingQuestion != null)
             {
-
-                if (value > 0)
-                {
-                    existingQuestion.VotesCount += value;
-                }
-                else if (value < 0)
-                {
-                    existingQuestion.VotesCount -= value;
-
-                }
+                existingQuestion.VotesCount += value;
                 db.SaveChanges();
             }
         }

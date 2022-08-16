@@ -15,12 +15,12 @@ namespace StockOverflowClone.Repositories
 
     }
 
-    public class CategoriesRepositories : ICategoriesrepositories
+    public class CategoriesRepositoriy : ICategoriesrepositories
     {
 
         StackOverflowDbContext db;
 
-        public CategoriesRepositories()
+        public CategoriesRepositoriy()
         {
             db = new StackOverflowDbContext();
         }
