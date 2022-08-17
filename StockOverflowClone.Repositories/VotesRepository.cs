@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using StackOverflowClone.DomainModels;
 
-namespace StockOverflowClone.Repositories
+namespace StackOverflowClone.Repositories
 {
 
     public interface IVotesRepository

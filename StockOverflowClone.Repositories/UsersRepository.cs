@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using StackOverflowClone.DomainModels;
 
-namespace StockOverflowClone.Repositories
+namespace StackOverflowClone.Repositories
 {
     public interface IUsersRepository
     {
@@ -76,9 +76,7 @@ namespace StockOverflowClone.Repositories
         public void UpdateUserDetails(User u)
         {
             User existingUser = db.Users.Where(temp => temp.UserID == u.UserID).FirstOrDefault();
-            existingUser.UserID = u.UserID;
-            existingUser.Email = u.Email;
-            existingUser.PasswordHash = u.PasswordHash;
+            existingUser.Name = u.Name;
             db.SaveChanges();
         }
 

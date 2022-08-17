@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using StackOverflowClone.DomainModels;
 
-namespace StockOverflowClone.Repositories
+namespace StackOverflowClone.Repositories
 {
     public interface ICategoriesrepositories
     {
@@ -15,12 +15,12 @@ namespace StockOverflowClone.Repositories
 
     }
 
-    public class CategoriesRepositoriy : ICategoriesrepositories
+    public class CategoriesRepository : ICategoriesrepositories
     {
 
         StackOverflowDbContext db;
 
-        public CategoriesRepositoriy()
+        public CategoriesRepository()
         {
             db = new StackOverflowDbContext();
         }

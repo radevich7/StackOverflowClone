@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone", "StockOverflowClone\StackOverflowClone.csproj", "{F7DC8C18-580A-44FA-9844-DF4C6EFE43C7}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.DomainMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.ViewModels", "StackOverflowClone.ViewModels\StackOverflowClone.ViewModels.csproj", "{4F36F305-8F7B-4CE4-980C-D31505177A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.Repositories", "StockOverflowClone.Repositories\StackOverflowClone.Repositories.csproj", "{B189D2E3-51D9-4FC8-B072-530EBFB405B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.Repository", "StockOverflowClone.Repositories\StackOverflowClone.Repository.csproj", "{B189D2E3-51D9-4FC8-B072-530EBFB405B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.ServiceLayer", "StackOverflowClone.ServiceLayer\StackOverflowClone.ServiceLayer.csproj", "{64CB0521-5A4C-4346-AADE-6A341F900908}"
 EndProject
