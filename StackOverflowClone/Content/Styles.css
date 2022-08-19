@@ -1,0 +1,25 @@
+﻿.hidden {
+    display: none;
+}
+
+#active {
+    color: #c5a41f;
+}
+
+.about-container {
+    background-image: url("../Images/about-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 94vh;
+}
+
+    .about-container div {
+        margin-top: 4rem;
+    }
+
+.login-box {
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px black;
+    margin-top: 10rem;
+    padding: 40px;
+}

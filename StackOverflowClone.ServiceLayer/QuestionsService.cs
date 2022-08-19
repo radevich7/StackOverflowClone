@@ -45,25 +45,49 @@ namespace StackOverflowClone.ServiceLayer
         public List<QuestionViewModel> GetAllQuestions()
         {
             List<Question> questionRep = qr.GetAllQuestions();
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Question, QuestionViewModel>();
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.CreateMap<Category, CategoriesViewModel>();
+                cfg.CreateMap<Answer, AnswerViewModel>();
+                cfg.CreateMap<Vote, VoteViewModel>();
+                cfg.IgnoreUnmapped();
+            });
             IMapper mapper = config.CreateMapper();
             List<QuestionViewModel> questions = mapper.Map<List<Question>, List<QuestionViewModel>>(questionRep);
             return questions;
         }
 
-        public QuestionViewModel GetQuestionByQuestionID(int questionID, int UserID=0)
+        public QuestionViewModel GetQuestionByQuestionID(int questionID, int UserID = 0)
         {
             Question questionRep = qr.GetQuestionByQuestionID(questionID).FirstOrDefault();
             QuestionViewModel questionSer = null;
             if (questionRep == null)
             {
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Question, QuestionViewModel>(); cfg.IgnoreUnmapped(); });
+                var config = new MapperConfiguration(cfg => {
+                    cfg.CreateMap<Question, QuestionViewModel>();
+                    cfg.CreateMap<User, UserViewModel>();
+                    cfg.CreateMap<Category, CategoriesViewModel>();
+                    cfg.CreateMap<Answer, AnswerViewModel>();
+                    cfg.CreateMap<Vote, VoteViewModel>();
+                    cfg.IgnoreUnmapped();
+                });
                 IMapper mapper = config.CreateMapper();
 
                 questionSer = mapper.Map<Question, QuestionViewModel>(questionRep);
+
+
+                foreach (var item in questionSer.Answers)
+                {
+
+                    item.CurrentUserVoteType = 0;
+                    VoteViewModel vote = item.Votes.Where(temp => temp.UserID == UserID).FirstOrDefault();
+                    if (vote != null)
+                    {
+                        item.CurrentUserVoteType = vote.VoteValue;
+                    }
+                }
             }
-
-
 
             return questionSer;
 

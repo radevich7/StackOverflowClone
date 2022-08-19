@@ -1,0 +1,87 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - StackOverflowClone</title>
+    @*@Styles.Render("~/Styles/bootstrap")*@
+    @*
+        @Styles.Render("~/Scripts/bootstrap")
+        @Styles.Render("~/Content/bootstrap.min.css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    @Styles.Render("~/Styles/site")
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-light text-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home/index">StackOverflowClone</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavBar" aria-controls="collapsibleNavBar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavBar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="/home/index">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="/home/about">About</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="/home/contact">Contact</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="/home/categories">Categories</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="/allquestions">Questions</a>
+                        </li>
+
+                        @if (Session["CurrentUserName"] == null)
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link active" aria-current="page" href="/account/login">Login</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" aria-current="page" href="/account/register">Register</a>
+                            </li>
+                        }
+
+                        @if (Session["CurrentUserName"] != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/Images/user.png" width="20px" />
+                                </a>
+                                <ul class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/account/changeprofile">Change Profile</a></li>
+                                    <li><a class="dropdown-item" href="/account/changepassword">Change Password</a></li>
+                                    <li><a class="dropdown-item" href="/account/logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                    </ul>
+                    <form class="d-flex" action="/home/search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+        <div>
+            @RenderBody()
+        </div>
+
+    </div>
+
+</body>
+</html>

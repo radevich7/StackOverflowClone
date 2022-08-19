@@ -10,7 +10,9 @@ namespace StackOverflowClone.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [RegularExpression(@"(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}$/)")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")]
         public string Email { get; set; }
 
         [Required]
@@ -21,7 +23,7 @@ namespace StackOverflowClone.ViewModels
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z]*$")]
+        //[RegularExpression(@"^[a-zA-Z*$")]
         public string Name { get; set; }
 
 
