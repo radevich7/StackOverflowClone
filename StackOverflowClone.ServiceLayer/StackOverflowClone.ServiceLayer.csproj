@@ -69,9 +69,9 @@
       <Project>{837f0145-1962-463d-a438-500a76c044d3}</Project>
       <Name>StackOverflowClone.DomainModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StackOverflowClone.Repositories\StackOverflowClone.Repository.csproj">
+    <ProjectReference Include="..\StackOverflowClone.Repositories\StackOverflowClone.Repositories.csproj">
       <Project>{b189d2e3-51d9-4fc8-b072-530ebfb405b0}</Project>
-      <Name>StackOverflowClone.Repository</Name>
+      <Name>StackOverflowClone.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\StackOverflowClone.ViewModels\StackOverflowClone.ViewModels.csproj">
       <Project>{4f36f305-8f7b-4ce4-980c-d31505177a0a}</Project>

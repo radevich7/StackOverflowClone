@@ -47,7 +47,7 @@ namespace StackOverflowClone.Controllers
 
         public ActionResult Login()
         {
-            LoginViewModel lvm= new LoginViewModel();
+            LoginViewModel lvm = new LoginViewModel();
             return View(lvm);
         }
 
@@ -61,7 +61,7 @@ namespace StackOverflowClone.Controllers
 
                 if (uvm != null)
                 {
-                    Session["CurrrentUserID"] = uvm.UserID;
+                    Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentUserName"] = uvm.Name;
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserPassword"] = uvm.Password;
@@ -93,5 +93,72 @@ namespace StackOverflowClone.Controllers
 
 
         }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public ActionResult ChangeProfile()
+        {
+            int uid = Convert.ToInt32(Session["CurrentUserID"]);
+            UserViewModel uvm = this.us.GetUsersByUserID(uid);
+            EditUserDetailsViewModel eudvm = new EditUserDetailsViewModel() { Name = uvm.Name, Email = uvm.Email, UserID = uvm.UserID };
+
+
+            return View(eudvm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeProfile(EditUserDetailsViewModel eudvm)
+        {
+            if (ModelState.IsValid)
+            {
+                eudvm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.us.UpdateUser(eudvm);
+                Session["CurrentUserName"] = eudvm.Name;
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+            }
+
+            return View(eudvm);
+        }
+
+        public ActionResult ChangePassword()
+        {
+            int uid = Convert.ToInt32(Session["CurrentUserID"]);
+            UserViewModel uvm = this.us.GetUsersByUserID(uid);
+            EditUserPasswordViewModel eupvm = new EditUserPasswordViewModel() { Email = uvm.Email, UserID = uvm.UserID, Password= "", ConfirmPassword= "" };
+
+
+            return View(eupvm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(EditUserPasswordViewModel eupvm)
+        {
+            if (ModelState.IsValid)
+            {
+                eupvm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.us.UpdateUserPassword(eupvm);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+            }
+
+            return View(eupvm);
+        }
+
+
+
     }
 }

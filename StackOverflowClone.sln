@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.ServiceL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone", "StackOverflowClone\StackOverflowClone.csproj", "{F7DC8C18-580A-44FA-9844-DF4C6EFE43C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.Repository", "StackOverflowClone.Repositories\StackOverflowClone.Repository.csproj", "{B189D2E3-51D9-4FC8-B072-530EBFB405B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowClone.Repositories", "StackOverflowClone.Repositories\StackOverflowClone.Repositories.csproj", "{B189D2E3-51D9-4FC8-B072-530EBFB405B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

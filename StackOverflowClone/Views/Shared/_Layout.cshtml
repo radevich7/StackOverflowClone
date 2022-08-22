@@ -57,7 +57,7 @@
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/Images/user.png" width="20px" />
+                                    <img src="~/Images/user.png" width="20px" /><span>@Session["CurrentUserName"]</span>
                                 </a>
                                 <ul class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="/account/changeprofile">Change Profile</a></li>
@@ -69,7 +69,7 @@
 
                     </ul>
                     <form class="d-flex" action="/home/search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="str">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>

@@ -13,10 +13,12 @@ namespace StackOverflowClone.Controllers
     {
 
         IQuestionsService qs;
+        ICategoriesService cs;
 
-        public HomeController(IQuestionsService qs)
+        public HomeController(IQuestionsService qs, ICategoriesService cs)
         {
             this.qs = qs;
+            this.cs = cs;
         }
         // GET: Home
         public ActionResult Index()
@@ -33,6 +35,26 @@ namespace StackOverflowClone.Controllers
         {
             return View();
         }
+        public ActionResult Categories()
+        {
+            List<CategoriesViewModel> categories = this.cs.GetAllCategories();
+            return View(categories);
+        }
 
+        [Route("allquestions")]
+        public ActionResult Questions()
+        {
+            List<QuestionViewModel> questions = this.qs.GetAllQuestions();
+            return View(questions);
+        }
+
+        public ActionResult Search(string str)
+        {
+            List<QuestionViewModel> questions = this.qs.GetAllQuestions().Where(temp => temp.QuestionName.ToLower().Contains(str.ToLower()) || temp.Category.CategoryName.ToLower().Contains(str.ToLower())
+            ).ToList();
+
+            ViewBag.SearchValue=str;
+            return View(questions);
+        }
     }
 }
